@@ -103,7 +103,7 @@ const values = [
   background: var(--cream);
   border: 1.5px solid var(--cream-dark);
   padding: 8px 16px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 0.88rem;
   color: var(--text-dark);
