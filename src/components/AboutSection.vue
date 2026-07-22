@@ -122,30 +122,15 @@ const values = [
   overflow: hidden;
 }
 
-.info-card::before {
-  content: '';
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  opacity: 0.15;
-}
-
 .card-orange {
   background: linear-gradient(135deg, #fff8ef 0%, #fff3e0 100%);
   border: 1.5px solid rgba(247, 148, 29, 0.2);
 }
 
-.card-orange::before { background: var(--orange); }
-
 .card-green {
   background: linear-gradient(135deg, #f0faf4 0%, #e8f5ec 100%);
   border: 1.5px solid rgba(26, 107, 53, 0.2);
 }
-
-.card-green::before { background: var(--green); }
 
 .info-card h3 {
   font-size: 1.2rem;
