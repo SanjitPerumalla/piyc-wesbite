@@ -39,8 +39,8 @@ let rafId = null
 function lerp(a, b, t) { return a + (b - a) * t }
 
 function animate() {
-  pos.x = lerp(pos.x, mouse.x, 0.18)
-  pos.y = lerp(pos.y, mouse.y, 0.18)
+  pos.x = lerp(pos.x, mouse.x, 0.45)
+  pos.y = lerp(pos.y, mouse.y, 0.45)
   rafId = requestAnimationFrame(animate)
 }
 
