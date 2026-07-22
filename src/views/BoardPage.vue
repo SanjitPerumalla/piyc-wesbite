@@ -21,6 +21,11 @@
                 :src="`${base}photos/${member.photo}`"
                 :alt="member.name"
                 class="member-photo"
+                :style="{
+                  objectPosition: member.pos || 'center top',
+                  transform: member.zoom ? `scale(${member.zoom})` : undefined,
+                  transformOrigin: 'center center',
+                }"
               />
               <div v-else class="member-placeholder">
                 {{ initials(member.name) }}
@@ -48,14 +53,14 @@ import FooterSection from '../components/FooterSection.vue'
 const base = import.meta.env.BASE_URL
 
 const board = [
-  { name: 'Sanjit Perumalla', role: 'Founder & President', photo: null },
-  { name: 'Hariom Thaker', role: 'Vice President', photo: 'hariom.jpg' },
-  { name: 'Darsh Chivukula', role: 'Communications Director', photo: 'darsh.jpg' },
-  { name: 'Aariz Khan', role: 'Communications Associate', photo: 'aariz.jpg' },
-  { name: 'Soumik Veeravali', role: 'Secretary', photo: 'soumik.jpg' },
-  { name: 'Neha Salimath', role: 'Social Media Co-Director', photo: 'neha.jpg' },
-  { name: 'Tasha Furtado', role: 'Treasurer', photo: 'tasha.jpg' },
-  { name: 'Akshith Narava', role: 'Board Member', photo: 'akshith.jpg' },
+  { name: 'Sanjit Perumalla', role: 'Founder & President', photo: 'sanjit.jpg', pos: 'center 20%' },
+  { name: 'Hariom Thaker', role: 'Vice President', photo: 'hariom.jpg', pos: 'center top' },
+  { name: 'Darsh Chivukula', role: 'Communications Director', photo: 'darsh.jpg', pos: 'center top' },
+  { name: 'Aariz Khan', role: 'Communications Associate', photo: 'aariz.jpg', pos: 'center 35%' },
+  { name: 'Soumik Veeravali', role: 'Secretary', photo: 'soumik.jpg', pos: 'center 30%' },
+  { name: 'Neha Salimath', role: 'Social Media Co-Director', photo: 'neha.jpg', pos: 'left top' },
+  { name: 'Tasha Furtado', role: 'Treasurer', photo: 'tasha.jpg', pos: 'center 25%', zoom: 1.35 },
+  { name: 'Akshith Narava', role: 'Board Member', photo: 'akshith.jpg', pos: 'center 15%' },
   { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
