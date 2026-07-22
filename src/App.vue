@@ -1,7 +1,6 @@
 <template>
-  <!-- Custom cursor -->
-  <div class="cursor-dot" :class="{ hovering: isHovering }" :style="{ left: mouse.x + 'px', top: mouse.y + 'px' }"></div>
-  <div class="cursor-ring" :class="{ hovering: isHovering }" :style="{ left: ring.x + 'px', top: ring.y + 'px' }"></div>
+  <!-- Glow orb cursor -->
+  <div class="cursor-orb" :class="{ hovering: isHovering }" :style="{ left: orb.x + 'px', top: orb.y + 'px' }"></div>
 
   <!-- Full-screen spotlight -->
   <div class="spotlight" :style="spotlightStyle"></div>
@@ -23,17 +22,17 @@ function updateProgress() {
 }
 
 // ── Mouse / cursor ───────────────────────────────────────────────────────────
-const mouse = reactive({ x: -200, y: -200 })
-const ring  = reactive({ x: -200, y: -200 })
+const mouse = reactive({ x: -300, y: -300 })
+const orb   = reactive({ x: -300, y: -300 })
 const isHovering = ref(false)
 let rafId = null
 
 function lerp(a, b, t) { return a + (b - a) * t }
 
-function animateRing() {
-  ring.x = lerp(ring.x, mouse.x, 0.12)
-  ring.y = lerp(ring.y, mouse.y, 0.12)
-  rafId = requestAnimationFrame(animateRing)
+function animateOrb() {
+  orb.x = lerp(orb.x, mouse.x, 0.10)
+  orb.y = lerp(orb.y, mouse.y, 0.10)
+  rafId = requestAnimationFrame(animateOrb)
 }
 
 function onMouseMove(e) {
@@ -56,7 +55,7 @@ onMounted(() => {
   window.addEventListener('scroll',    updateProgress, { passive: true })
   window.addEventListener('mousemove', onMouseMove,    { passive: true })
   window.addEventListener('mouseover', onMouseOver,    { passive: true })
-  animateRing()
+  animateOrb()
 })
 
 onUnmounted(() => {
@@ -68,46 +67,29 @@ onUnmounted(() => {
 </script>
 
 <style>
-/* ── Custom cursor ─────────────────────────────────────────────────────────── */
+/* ── Glow orb cursor ───────────────────────────────────────────────────────── */
 .has-custom-cursor * { cursor: none !important; }
 
-.cursor-dot {
+.cursor-orb {
   position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--orange);
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
+  background: radial-gradient(circle, rgba(247,148,29,0.55) 0%, rgba(247,148,29,0.18) 45%, transparent 70%);
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, opacity 0.2s ease;
+  transition: width 0.45s cubic-bezier(0.22,1,0.36,1),
+              height 0.45s cubic-bezier(0.22,1,0.36,1),
+              background 0.45s ease,
+              opacity 0.3s ease;
   will-change: left, top;
 }
 
-.cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--orange);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  opacity: 0.55;
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
-  will-change: left, top;
-}
-
-.cursor-dot.hovering {
-  transform: translate(-50%, -50%) scale(2.5);
-  opacity: 0;
-}
-
-.cursor-ring.hovering {
-  width: 54px;
-  height: 54px;
-  border-color: var(--green);
-  opacity: 0.85;
+.cursor-orb.hovering {
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle, rgba(26,107,53,0.45) 0%, rgba(26,107,53,0.12) 45%, transparent 70%);
 }
 
 /* ── Full-screen spotlight ─────────────────────────────────────────────────── */
