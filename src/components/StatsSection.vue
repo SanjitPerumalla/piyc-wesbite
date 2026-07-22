@@ -19,7 +19,7 @@ import AnimatedCounter from './AnimatedCounter.vue'
 const stats = [
   { value: 50, suffix: '+', label: 'Active Members' },
   { value: 1, suffix: '', label: 'Charity Tournaments Hosted' },
-  { value: 100, suffix: '+', label: 'Dollars Raised for Charity' },
+  { value: 300, suffix: '+', label: 'Dollars Raised for Charity' },
   { value: 1, suffix: '', label: 'Local Charities Supported' },
 ]
 </script>
