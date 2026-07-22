@@ -32,27 +32,6 @@ const stats = [
   overflow: hidden;
 }
 
-.stats::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: rgba(247, 148, 29, 0.15);
-}
-
-.stats::after {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  left: -40px;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-}
 
 .container {
   max-width: 1200px;
