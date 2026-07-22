@@ -49,10 +49,10 @@ const base = import.meta.env.BASE_URL
 
 const board = [
   { name: 'Sanjit Perumalla', role: 'Founder & President', photo: null },
-  { name: 'Darsh Chivukula', role: 'Member', photo: 'darsh.jpg' },
-  { name: 'Hariom Thaker', role: 'Member', photo: 'hariom.jpg' },
-  { name: 'Aariz Khan', role: 'Member', photo: 'aariz.jpg' },
-  { name: 'Board Member', role: 'Member', photo: null },
+  { name: 'Hariom Thaker', role: 'Vice President', photo: 'hariom.jpg' },
+  { name: 'Darsh Chivukula', role: 'Communications Director', photo: 'darsh.jpg' },
+  { name: 'Aariz Khan', role: 'Communications Associate', photo: 'aariz.jpg' },
+  { name: 'Akshith Narava', role: 'Board Member', photo: 'akshith.jpg' },
   { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
