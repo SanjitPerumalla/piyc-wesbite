@@ -1,6 +1,17 @@
 <template>
-  <!-- Glow orb cursor -->
-  <div class="cursor-orb" :class="{ hovering: isHovering }" :style="{ left: orb.x + 'px', top: orb.y + 'px' }"></div>
+  <!-- Dot trail cursor -->
+  <div
+    v-for="(dot, i) in trail"
+    :key="i"
+    class="trail-dot"
+    :style="{
+      left:    dot.x + 'px',
+      top:     dot.y + 'px',
+      width:   dotSize(i) + 'px',
+      height:  dotSize(i) + 'px',
+      opacity: dotOpacity(i),
+    }"
+  ></div>
 
   <!-- Full-screen spotlight -->
   <div class="spotlight" :style="spotlightStyle"></div>
@@ -12,36 +23,40 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
+import { reactive, computed, onMounted, onUnmounted } from 'vue'
+
+const TRAIL = 14
 
 // ── Scroll progress ──────────────────────────────────────────────────────────
-const progress = ref(0)
+const state = reactive({ progress: 0 })
 function updateProgress() {
   const h = document.documentElement.scrollHeight - window.innerHeight
-  progress.value = h > 0 ? (window.scrollY / h) * 100 : 0
+  state.progress = h > 0 ? (window.scrollY / h) * 100 : 0
 }
 
-// ── Mouse / cursor ───────────────────────────────────────────────────────────
-const mouse = reactive({ x: -300, y: -300 })
-const orb   = reactive({ x: -300, y: -300 })
-const isHovering = ref(false)
+// ── Trail dots ───────────────────────────────────────────────────────────────
+const mouse = reactive({ x: -400, y: -400 })
+const trail = reactive(Array.from({ length: TRAIL }, () => ({ x: -400, y: -400 })))
 let rafId = null
 
 function lerp(a, b, t) { return a + (b - a) * t }
 
-function animateOrb() {
-  orb.x = lerp(orb.x, mouse.x, 0.10)
-  orb.y = lerp(orb.y, mouse.y, 0.10)
-  rafId = requestAnimationFrame(animateOrb)
+function dotSize(i)    { return 9 - (i / (TRAIL - 1)) * 6 }
+function dotOpacity(i) { return 1 - (i / (TRAIL - 1)) * 0.92 }
+
+function animate() {
+  trail[0].x = lerp(trail[0].x, mouse.x, 0.38)
+  trail[0].y = lerp(trail[0].y, mouse.y, 0.38)
+  for (let i = 1; i < TRAIL; i++) {
+    trail[i].x = lerp(trail[i].x, trail[i - 1].x, 0.38)
+    trail[i].y = lerp(trail[i].y, trail[i - 1].y, 0.38)
+  }
+  rafId = requestAnimationFrame(animate)
 }
 
 function onMouseMove(e) {
   mouse.x = e.clientX
   mouse.y = e.clientY
-}
-
-function onMouseOver(e) {
-  isHovering.value = !!e.target.closest('a, button, [role="button"], .member-card')
 }
 
 const spotlightStyle = computed(() => ({
@@ -54,42 +69,28 @@ onMounted(() => {
   }
   window.addEventListener('scroll',    updateProgress, { passive: true })
   window.addEventListener('mousemove', onMouseMove,    { passive: true })
-  window.addEventListener('mouseover', onMouseOver,    { passive: true })
-  animateOrb()
+  animate()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll',    updateProgress)
   window.removeEventListener('mousemove', onMouseMove)
-  window.removeEventListener('mouseover', onMouseOver)
   cancelAnimationFrame(rafId)
 })
 </script>
 
 <style>
-/* ── Glow orb cursor ───────────────────────────────────────────────────────── */
+/* ── Dot trail cursor ──────────────────────────────────────────────────────── */
 .has-custom-cursor * { cursor: none !important; }
 
-.cursor-orb {
+.trail-dot {
   position: fixed;
-  width: 64px;
-  height: 64px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(247,148,29,0.55) 0%, rgba(247,148,29,0.18) 45%, transparent 70%);
+  background: var(--orange);
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  transition: width 0.45s cubic-bezier(0.22,1,0.36,1),
-              height 0.45s cubic-bezier(0.22,1,0.36,1),
-              background 0.45s ease,
-              opacity 0.3s ease;
   will-change: left, top;
-}
-
-.cursor-orb.hovering {
-  width: 110px;
-  height: 110px;
-  background: radial-gradient(circle, rgba(26,107,53,0.45) 0%, rgba(26,107,53,0.12) 45%, transparent 70%);
 }
 
 /* ── Full-screen spotlight ─────────────────────────────────────────────────── */
