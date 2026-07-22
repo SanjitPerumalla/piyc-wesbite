@@ -1,17 +1,16 @@
 <template>
-  <!-- Dot trail cursor -->
-  <div
-    v-for="(dot, i) in trail"
-    :key="i"
-    class="trail-dot"
-    :style="{
-      left:    dot.x + 'px',
-      top:     dot.y + 'px',
-      width:   dotSize(i) + 'px',
-      height:  dotSize(i) + 'px',
-      opacity: dotOpacity(i),
-    }"
-  ></div>
+  <!-- Dharma wheel cursor -->
+  <div class="cursor-wheel" :style="{ left: pos.x + 'px', top: pos.y + 'px' }">
+    <svg width="38" height="38" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="15.5" fill="none" stroke="#06038D" stroke-width="2.5"/>
+      <line v-for="i in 24" :key="i"
+        x1="18" y1="4" x2="18" y2="15"
+        stroke="#06038D" stroke-width="0.9"
+        :transform="`rotate(${(i - 1) * 15}, 18, 18)`"
+      />
+      <circle cx="18" cy="18" r="2.8" fill="#06038D"/>
+    </svg>
+  </div>
 
   <!-- Full-screen spotlight -->
   <div class="spotlight" :style="spotlightStyle"></div>
@@ -25,32 +24,23 @@
 <script setup>
 import { reactive, computed, onMounted, onUnmounted } from 'vue'
 
-const TRAIL = 14
-
 // ── Scroll progress ──────────────────────────────────────────────────────────
-const state = reactive({ progress: 0 })
+const progress = reactive({ value: 0 })
 function updateProgress() {
   const h = document.documentElement.scrollHeight - window.innerHeight
-  state.progress = h > 0 ? (window.scrollY / h) * 100 : 0
+  progress.value = h > 0 ? (window.scrollY / h) * 100 : 0
 }
 
-// ── Trail dots ───────────────────────────────────────────────────────────────
-const mouse = reactive({ x: -400, y: -400 })
-const trail = reactive(Array.from({ length: TRAIL }, () => ({ x: -400, y: -400 })))
+// ── Wheel cursor ─────────────────────────────────────────────────────────────
+const mouse = reactive({ x: -200, y: -200 })
+const pos   = reactive({ x: -200, y: -200 })
 let rafId = null
 
 function lerp(a, b, t) { return a + (b - a) * t }
 
-function dotSize(i)    { return 9 - (i / (TRAIL - 1)) * 6 }
-function dotOpacity(i) { return 1 - (i / (TRAIL - 1)) * 0.92 }
-
 function animate() {
-  trail[0].x = lerp(trail[0].x, mouse.x, 0.38)
-  trail[0].y = lerp(trail[0].y, mouse.y, 0.38)
-  for (let i = 1; i < TRAIL; i++) {
-    trail[i].x = lerp(trail[i].x, trail[i - 1].x, 0.38)
-    trail[i].y = lerp(trail[i].y, trail[i - 1].y, 0.38)
-  }
+  pos.x = lerp(pos.x, mouse.x, 0.18)
+  pos.y = lerp(pos.y, mouse.y, 0.18)
   rafId = requestAnimationFrame(animate)
 }
 
@@ -80,17 +70,25 @@ onUnmounted(() => {
 </script>
 
 <style>
-/* ── Dot trail cursor ──────────────────────────────────────────────────────── */
+/* ── Dharma wheel cursor ───────────────────────────────────────────────────── */
 .has-custom-cursor * { cursor: none !important; }
 
-.trail-dot {
+.cursor-wheel {
   position: fixed;
-  border-radius: 50%;
-  background: var(--orange);
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
   will-change: left, top;
+}
+
+.cursor-wheel svg {
+  animation: dharma-spin 5s linear infinite;
+  display: block;
+}
+
+@keyframes dharma-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* ── Full-screen spotlight ─────────────────────────────────────────────────── */
