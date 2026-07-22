@@ -18,7 +18,7 @@
             <div class="member-photo-wrap">
               <img
                 v-if="member.photo"
-                :src="member.photo"
+                :src="`${base}photos/${member.photo}`"
                 :alt="member.name"
                 class="member-photo"
               />
@@ -45,13 +45,15 @@ import FooterSection from '../components/FooterSection.vue'
 
 // Add your board members here — set photo to a path like '/photos/sanjit.jpg'
 // or leave it null to show the initials placeholder
+const base = import.meta.env.BASE_URL
+
 const board = [
   { name: 'Sanjit Perumalla', role: 'Founder & President', photo: null },
-  { name: 'Board Member', role: 'Vice President', photo: null },
-  { name: 'Board Member', role: 'Event Coordinator', photo: null },
-  { name: 'Board Member', role: 'Volunteer Lead', photo: null },
-  { name: 'Board Member', role: 'Treasurer', photo: null },
-  { name: 'Board Member', role: 'Secretary', photo: null },
+  { name: 'Darsh Chivukula', role: 'Member', photo: 'darsh.jpg' },
+  { name: 'Hariom Thaker', role: 'Member', photo: 'hariom.jpg' },
+  { name: 'Aariz Khan', role: 'Member', photo: 'aariz.jpg' },
+  { name: 'Board Member', role: 'Member', photo: null },
+  { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
   { name: 'Board Member', role: 'Member', photo: null },
