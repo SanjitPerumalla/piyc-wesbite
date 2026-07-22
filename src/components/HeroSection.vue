@@ -6,46 +6,60 @@
       <div class="blob blob-3"></div>
     </div>
 
-    <div class="hero-content">
-      <div class="hero-badge">
+    <div class="hero-content" :style="contentStyle">
+      <div class="hero-badge enter enter-1">
         <span class="badge-dot"></span>
         Peoria, Illinois
       </div>
 
-      <h1 class="hero-title">
+      <h1 class="hero-title enter enter-2">
         Building Community<br/>
         <span class="title-accent">Through Sport &amp;</span><br/>
         <span class="title-green">Service</span>
       </h1>
 
-      <p class="hero-desc">
+      <p class="hero-desc enter enter-3">
         The Peoria Indian Youth Coalition unites 50+ passionate members to create
         meaningful change — through charitable events, community engagement, and
         the power of athletics.
       </p>
 
-      <div class="hero-actions">
-        <a href="#get-involved" class="btn-primary">Join the Coalition</a>
+      <div class="hero-actions enter enter-4">
+        <router-link to="/join" class="btn-primary">Join the Coalition</router-link>
         <a href="#about" class="btn-secondary">Our Story</a>
       </div>
 
-      <div class="hero-scroll">
+      <div class="hero-scroll enter enter-5">
         <div class="scroll-indicator"></div>
         <span>Scroll to explore</span>
       </div>
     </div>
 
-    <div class="hero-visual">
+    <div class="hero-visual enter enter-visual" :style="logoStyle">
       <div class="logo-showcase">
-        <PiycLogo :size="220" />
-        <div class="logo-ring"></div>
+        <div class="logo-card">
+          <img src="/piyc-logo.png" alt="PIYC Logo" class="hero-logo-img" />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import PiycLogo from './PiycLogo.vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+const scrollY = ref(0)
+function onScroll() { scrollY.value = window.scrollY }
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
+
+const contentStyle = computed(() => ({
+  opacity: Math.max(0, 1 - scrollY.value / 480),
+}))
+
+const logoStyle = computed(() => ({
+  transform: `translateY(${scrollY.value * 0.14}px)`,
+}))
 </script>
 
 <style scoped>
@@ -177,6 +191,7 @@ import PiycLogo from './PiycLogo.vue'
   font-size: 1rem;
   transition: all 0.25s ease;
   box-shadow: 0 4px 20px rgba(247, 148, 29, 0.35);
+  text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -194,6 +209,7 @@ import PiycLogo from './PiycLogo.vue'
   font-size: 1rem;
   border: 2.5px solid var(--green);
   transition: all 0.25s ease;
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
@@ -245,25 +261,40 @@ import PiycLogo from './PiycLogo.vue'
 
 .logo-showcase {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 560px;
+  height: 420px;
+  margin-top: -60px;
+}
+
+.logo-card {
+  position: absolute;
+  inset: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.logo-ring {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  border: 2px dashed rgba(247, 148, 29, 0.3);
-  animation: spin 20s linear infinite;
+.hero-logo-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* === Hero entry animations === */
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
+.enter {
+  animation: heroEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.enter-1 { animation-delay: 0.05s; }
+.enter-2 { animation-delay: 0.18s; }
+.enter-3 { animation-delay: 0.30s; }
+.enter-4 { animation-delay: 0.42s; }
+.enter-5 { animation-delay: 0.56s; }
+.enter-visual { animation-delay: 0.12s; }
 
 @media (max-width: 900px) {
   .hero {
@@ -276,10 +307,6 @@ import PiycLogo from './PiycLogo.vue'
   .hero-actions { justify-content: center; }
   .hero-scroll { justify-content: center; }
   .hero-badge { display: inline-flex; }
-}
-
-@media (max-width: 480px) {
-  .logo-showcase { width: 200px; height: 200px; }
-  .logo-ring { inset: -16px; }
+  .logo-showcase { width: 320px; height: 240px; }
 }
 </style>

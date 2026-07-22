@@ -2,16 +2,15 @@
   <section id="events" class="events">
     <div class="container">
       <div class="section-header">
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Our <span class="orange">Signature Events</span></h2>
-        <p class="section-sub">We transform athletic competition into community impact — every match played means more for the causes we care about.</p>
+        <div class="section-label reveal">What We Do</div>
+        <h2 class="section-title reveal delay-1">Our <span class="orange">Signature Events</span></h2>
+        <p class="section-sub reveal delay-2">We transform athletic competition into community impact — every match played means more for the causes we care about.</p>
       </div>
 
-      <div class="event-feature">
+      <div class="event-feature reveal delay-1">
         <div class="event-badge">Featured Event</div>
         <div class="event-content">
           <div class="event-left">
-            <div class="event-icon-large">🏓</div>
             <h3>Pickleball Charity Tournament</h3>
             <p class="event-desc">
               Our flagship event brings the community together for an afternoon of competition,
@@ -21,7 +20,6 @@
 
             <div class="event-details">
               <div v-for="detail in eventDetails" :key="detail.label" class="detail-row">
-                <span class="detail-icon">{{ detail.icon }}</span>
                 <div>
                   <span class="detail-label">{{ detail.label }}</span>
                   <span class="detail-value">{{ detail.value }}</span>
@@ -58,14 +56,12 @@
                 </div>
                 <div class="bracket-arrow">›</div>
                 <div class="trophy">
-                  <div>🏆</div>
-                  <div class="trophy-text">$100<br/>Gift Card</div>
+                  <div class="trophy-label">$100<br/>Gift Card</div>
                 </div>
               </div>
             </div>
 
             <div class="charity-flow">
-              <div class="flow-icon">❤️</div>
               <div class="flow-text">
                 <strong>Winners choose the charity</strong>
                 <span>Proceeds go directly to a local cause they believe in</span>
@@ -76,8 +72,7 @@
       </div>
 
       <div class="logistics-grid">
-        <div v-for="item in logistics" :key="item.title" class="logistics-card">
-          <div class="logistics-icon">{{ item.icon }}</div>
+        <div v-for="(item, i) in logistics" :key="item.title" class="logistics-card reveal" :class="`delay-${i + 1}`">
           <h4>{{ item.title }}</h4>
           <p>{{ item.desc }}</p>
         </div>
@@ -88,18 +83,18 @@
 
 <script setup>
 const eventDetails = [
-  { icon: '⏰', label: 'Time', value: '4:00 PM – 7:00 PM' },
-  { icon: '💵', label: 'Entry Fee', value: '$5 per person' },
-  { icon: '👥', label: 'Team Size', value: 'Up to 4 players (doubles + subs)' },
-  { icon: '🎁', label: 'Prize', value: '$100 gift card for winning team' },
-  { icon: '📍', label: 'Location', value: 'Peoria, Illinois' },
+  { label: 'Time', value: '4:00 PM – 7:00 PM' },
+  { label: 'Entry Fee', value: '$5 per person' },
+  { label: 'Team Size', value: 'Up to 4 players (doubles + subs)' },
+  { label: 'Prize', value: '$100 gift card for winning team' },
+  { label: 'Location', value: 'Peoria, Illinois' },
 ]
 
 const logistics = [
-  { icon: '🎪', title: 'Court Setup', desc: 'Full pickleball court setup with nets, marked boundaries, and equipment provided for all participants.' },
-  { icon: '🍿', title: 'Food & Refreshments', desc: 'Cotton candy, popcorn, and cookies available — keeping energy high throughout the tournament.' },
-  { icon: '🧃', title: 'Volunteer Teams', desc: 'Dedicated volunteer coordinators managing supplies, coolers, ice, sanitizer, and player logistics.' },
-  { icon: '📋', title: 'Bracket Management', desc: 'Live bracket tracking and real-time adjustments to handle scheduling changes and ensure fair play.' },
+  { title: 'Court Setup', desc: 'Full pickleball court setup with nets, marked boundaries, and equipment provided for all participants.' },
+  { title: 'Food & Refreshments', desc: 'Cotton candy, popcorn, and cookies available — keeping energy high throughout the tournament.' },
+  { title: 'Volunteer Teams', desc: 'Dedicated volunteer coordinators managing supplies, coolers, ice, sanitizer, and player logistics.' },
+  { title: 'Bracket Management', desc: 'Live bracket tracking and real-time adjustments to handle scheduling changes and ensure fair play.' },
 ]
 </script>
 
@@ -146,7 +141,7 @@ const logistics = [
 }
 
 .event-feature {
-  background: var(--white);
+  background: var(--cream);
   border-radius: 28px;
   padding: 48px;
   margin-bottom: 40px;
@@ -176,11 +171,6 @@ const logistics = [
   align-items: start;
 }
 
-.event-icon-large {
-  font-size: 3rem;
-  margin-bottom: 12px;
-}
-
 .event-left h3 {
   font-size: 1.7rem;
   font-weight: 900;
@@ -204,23 +194,22 @@ const logistics = [
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--cream-dark);
 }
 
-.detail-icon {
-  font-size: 1.1rem;
-  width: 28px;
-  flex-shrink: 0;
-  margin-top: 1px;
+.detail-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .detail-label {
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   color: var(--text-light);
   display: block;
-  line-height: 1;
   margin-bottom: 3px;
 }
 
@@ -270,7 +259,7 @@ const logistics = [
 }
 
 .match-slot {
-  background: var(--white);
+  background: var(--cream);
   border: 1.5px solid var(--cream-dark);
   padding: 6px 14px;
   border-radius: 8px;
@@ -299,30 +288,25 @@ const logistics = [
   font-weight: 700;
 }
 
-.trophy {
-  text-align: center;
-}
-
-.trophy > div:first-child { font-size: 2rem; }
-.trophy-text {
-  font-size: 0.78rem;
-  font-weight: 700;
+.trophy-label {
+  font-size: 0.85rem;
+  font-weight: 800;
   color: var(--green);
-  line-height: 1.3;
-  margin-top: 4px;
+  line-height: 1.4;
+  text-align: center;
+  background: rgba(26, 107, 53, 0.08);
+  border: 1.5px solid rgba(26, 107, 53, 0.2);
+  padding: 10px 14px;
+  border-radius: 10px;
 }
 
 .charity-flow {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   background: linear-gradient(135deg, #f0faf4, #e8f5ec);
   border: 1.5px solid rgba(26, 107, 53, 0.2);
   border-radius: 14px;
   padding: 18px 20px;
 }
 
-.flow-icon { font-size: 1.8rem; flex-shrink: 0; }
 .flow-text { display: flex; flex-direction: column; gap: 4px; }
 .flow-text strong { font-size: 0.95rem; color: var(--green); }
 .flow-text span { font-size: 0.85rem; color: var(--text-mid); }
@@ -334,7 +318,7 @@ const logistics = [
 }
 
 .logistics-card {
-  background: var(--white);
+  background: var(--cream);
   border-radius: 16px;
   padding: 28px 24px;
   border: 1.5px solid var(--cream-dark);
@@ -344,11 +328,6 @@ const logistics = [
 .logistics-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-
-.logistics-icon {
-  font-size: 2rem;
-  margin-bottom: 12px;
 }
 
 .logistics-card h4 {
@@ -372,6 +351,5 @@ const logistics = [
 @media (max-width: 540px) {
   .event-feature { padding: 32px 20px; }
   .logistics-grid { grid-template-columns: 1fr; }
-  .bracket-rounds { gap: 8px; }
 }
 </style>

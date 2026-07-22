@@ -2,32 +2,27 @@
   <section id="get-involved" class="get-involved">
     <div class="container">
       <div class="section-header">
-        <div class="section-label">Join Us</div>
-        <h2 class="section-title">Be Part of <span class="orange">Something Bigger</span></h2>
-        <p>Whether you're a student, athlete, or community member — there's a place for you at PIYC.</p>
+        <div class="section-label reveal">Join Us</div>
+        <h2 class="section-title reveal delay-1">Be Part of <span class="orange">Something Bigger</span></h2>
+        <p class="reveal delay-2">Whether you're a student, athlete, or community member — there's a place for you at PIYC.</p>
       </div>
 
       <div class="ways-grid">
-        <div v-for="way in ways" :key="way.title" class="way-card" :class="way.accent">
-          <div class="way-icon">{{ way.icon }}</div>
+        <div v-for="(way, i) in ways" :key="way.title" class="way-card reveal from-scale" :class="[way.accent, `delay-${i + 1}`]">
           <h3>{{ way.title }}</h3>
           <p>{{ way.desc }}</p>
-          <a href="mailto:piyc@example.com" class="way-btn">{{ way.cta }}</a>
+          <router-link to="/join" class="way-btn">{{ way.cta }}</router-link>
         </div>
       </div>
 
-      <div class="contact-banner">
+      <div class="contact-banner reveal delay-1">
         <div class="contact-text">
           <h3>Ready to connect?</h3>
           <p>Reach out to learn more about membership, upcoming events, or partnership opportunities.</p>
         </div>
         <div class="contact-actions">
-          <a href="mailto:piyc@example.com" class="btn-contact-primary">
-            ✉ Contact PIYC
-          </a>
-          <a href="mailto:piyc@example.com" class="btn-contact-secondary">
-            Learn More
-          </a>
+          <router-link to="/join" class="btn-contact-primary">Contact PIYC</router-link>
+          <a href="#about" class="btn-contact-secondary">Learn More</a>
         </div>
       </div>
     </div>
@@ -37,25 +32,25 @@
 <script setup>
 const ways = [
   {
-    icon: '🙋',
     title: 'Become a Member',
     desc: 'Join our 50+ member coalition and help shape events, volunteer, and lead initiatives that make Peoria better.',
     cta: 'Join Now',
     accent: 'accent-orange',
+    link: 'join',
   },
   {
-    icon: '🙌',
     title: 'Volunteer',
     desc: 'Help us run tournaments, manage logistics, coordinate food and supplies, or handle bracket management on event day.',
     cta: 'Volunteer',
     accent: 'accent-green',
+    link: 'email',
   },
   {
-    icon: '🤝',
     title: 'Partner With Us',
     desc: 'Organizations and businesses interested in sponsoring events or collaborating on charitable initiatives are welcome.',
     cta: 'Partner',
     accent: 'accent-cream',
+    link: 'email',
   },
 ]
 </script>
@@ -110,7 +105,7 @@ const ways = [
 }
 
 .way-card {
-  background: var(--white);
+  background: var(--cream);
   border-radius: 24px;
   padding: 40px 32px;
   border: 1.5px solid var(--cream-dark);
@@ -124,29 +119,6 @@ const ways = [
 .way-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.09);
-}
-
-.way-icon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-}
-
-.accent-orange .way-icon {
-  background: rgba(247, 148, 29, 0.12);
-}
-
-.accent-green .way-icon {
-  background: rgba(26, 107, 53, 0.1);
-}
-
-.accent-cream .way-icon {
-  background: var(--cream);
 }
 
 .way-card h3 {
@@ -171,6 +143,7 @@ const ways = [
   font-size: 0.9rem;
   transition: all 0.2s;
   display: inline-block;
+  text-decoration: none;
 }
 
 .accent-orange .way-btn {
@@ -193,7 +166,7 @@ const ways = [
 .accent-cream .way-btn:hover { background: var(--cream-dark); }
 
 .contact-banner {
-  background: var(--white);
+  background: var(--cream);
   border-radius: 24px;
   padding: 44px 48px;
   display: flex;
@@ -232,6 +205,7 @@ const ways = [
   font-size: 0.95rem;
   transition: all 0.2s;
   white-space: nowrap;
+  text-decoration: none;
 }
 .btn-contact-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
 
@@ -245,6 +219,7 @@ const ways = [
   border: 2px solid var(--green);
   transition: all 0.2s;
   white-space: nowrap;
+  text-decoration: none;
 }
 .btn-contact-secondary:hover { background: var(--green); color: var(--white); }
 

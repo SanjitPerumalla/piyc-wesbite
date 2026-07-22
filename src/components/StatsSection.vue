@@ -2,8 +2,7 @@
   <section class="stats">
     <div class="container">
       <div class="stats-grid">
-        <div v-for="stat in stats" :key="stat.label" class="stat-card">
-          <div class="stat-icon">{{ stat.icon }}</div>
+        <div v-for="(stat, i) in stats" :key="stat.label" class="stat-card reveal from-scale" :class="`delay-${i + 1}`">
           <div class="stat-number">
             <AnimatedCounter :target="stat.value" :suffix="stat.suffix" />
           </div>
@@ -18,10 +17,10 @@
 import AnimatedCounter from './AnimatedCounter.vue'
 
 const stats = [
-  { icon: '👥', value: 50, suffix: '+', label: 'Active Members' },
-  { icon: '🏓', value: 1, suffix: '', label: 'Charity Tournaments Hosted' },
-  { icon: '💰', value: 100, suffix: '+', label: 'Dollars Raised for Charity' },
-  { icon: '🤝', value: 1, suffix: '', label: 'Local Charities Supported' },
+  { value: 50, suffix: '+', label: 'Active Members' },
+  { value: 1, suffix: '', label: 'Charity Tournaments Hosted' },
+  { value: 100, suffix: '+', label: 'Dollars Raised for Charity' },
+  { value: 1, suffix: '', label: 'Local Charities Supported' },
 ]
 </script>
 
@@ -80,11 +79,6 @@ const stats = [
 
 .stat-card:hover {
   transform: translateY(-4px);
-}
-
-.stat-icon {
-  font-size: 2.2rem;
-  margin-bottom: 12px;
 }
 
 .stat-number {

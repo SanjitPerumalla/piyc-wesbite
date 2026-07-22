@@ -3,36 +3,33 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
-          <div class="section-label">Who We Are</div>
-          <h2 class="section-title">A Nonprofit Built <span class="orange">From the Ground Up</span></h2>
-          <p>
+          <div class="section-label reveal from-left">Who We Are</div>
+          <h2 class="section-title reveal from-left delay-1">A Nonprofit Built <span class="orange">From the Ground Up</span></h2>
+          <p class="reveal from-left delay-2">
             The Peoria Indian Youth Coalition (PIYC) is a youth-led nonprofit organization
             in Peoria, Illinois, founded with a single purpose: to make a tangible difference
             in our community through organized events, charitable giving, and the spirit of
             togetherness.
           </p>
-          <p>
+          <p class="reveal from-left delay-3">
             What started as a vision has grown into a 50+ member strong coalition of dedicated
             young leaders who believe that community engagement is the foundation of lasting change.
             We organize, manage, and execute events that bring people together — and funnel the
             proceeds into causes that matter.
           </p>
-          <div class="about-values">
+          <div class="about-values reveal delay-4">
             <div v-for="val in values" :key="val.label" class="value-chip">
-              <span class="chip-icon">{{ val.icon }}</span>
               {{ val.label }}
             </div>
           </div>
         </div>
 
         <div class="about-cards">
-          <div class="info-card card-orange">
-            <div class="card-icon">🤝</div>
+          <div class="info-card card-orange reveal from-right delay-1">
             <h3>Our Mission</h3>
             <p>To empower the Indian-American youth of Peoria by creating community-driven events that raise funds for local charities while building leadership and civic responsibility.</p>
           </div>
-          <div class="info-card card-green">
-            <div class="card-icon">🌱</div>
+          <div class="info-card card-green reveal from-right delay-3">
             <h3>Our Vision</h3>
             <p>A Peoria where youth organizations are at the forefront of community development — building bridges between generations, cultures, and causes.</p>
           </div>
@@ -44,17 +41,17 @@
 
 <script setup>
 const values = [
-  { icon: '🎯', label: 'Community First' },
-  { icon: '🏆', label: 'Excellence' },
-  { icon: '❤️', label: 'Charity Driven' },
-  { icon: '⚡', label: 'Youth Led' },
+  { label: 'Community First' },
+  { label: 'Excellence' },
+  { label: 'Charity Driven' },
+  { label: 'Youth Led' },
 ]
 </script>
 
 <style scoped>
 .about {
   padding: 100px 24px;
-  background: var(--white);
+  background: var(--cream);
 }
 
 .container {
@@ -103,9 +100,6 @@ const values = [
 }
 
 .value-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   background: var(--cream);
   border: 1.5px solid var(--cream-dark);
   padding: 8px 16px;
@@ -114,8 +108,6 @@ const values = [
   font-size: 0.88rem;
   color: var(--text-dark);
 }
-
-.chip-icon { font-size: 1rem; }
 
 .about-cards {
   display: flex;
@@ -154,11 +146,6 @@ const values = [
 }
 
 .card-green::before { background: var(--green); }
-
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
 
 .info-card h3 {
   font-size: 1.2rem;

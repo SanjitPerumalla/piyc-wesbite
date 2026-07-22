@@ -1,16 +1,16 @@
 <template>
   <nav :class="['navbar', { scrolled: isScrolled }]">
     <div class="nav-inner">
-      <a href="#home" class="nav-logo">
-        <PiycLogo :size="44" />
-        <span class="logo-text"><span class="orange">PIYC</span></span>
-      </a>
+      <router-link to="/" class="nav-logo">
+        <img src="/piyc-logo.png" alt="PIYC Logo" class="logo-img" />
+      </router-link>
 
       <div class="nav-links" :class="{ open: menuOpen }">
-        <a href="#about" @click="menuOpen = false">About</a>
-        <a href="#events" @click="menuOpen = false">Events</a>
-        <a href="#impact" @click="menuOpen = false">Impact</a>
-        <a href="#get-involved" class="nav-cta" @click="menuOpen = false">Get Involved</a>
+        <a href="/#about" @click="menuOpen = false">About</a>
+        <a href="/#events" @click="menuOpen = false">Events</a>
+        <a href="/#impact" @click="menuOpen = false">Impact</a>
+        <router-link to="/board" @click="menuOpen = false">Board</router-link>
+        <router-link to="/join" class="nav-cta" @click="menuOpen = false">Get Involved</router-link>
       </div>
 
       <button class="hamburger" @click="menuOpen = !menuOpen" aria-label="Toggle menu">
@@ -24,7 +24,6 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import PiycLogo from './PiycLogo.vue'
 
 const isScrolled = ref(false)
 const menuOpen = ref(false)
@@ -45,14 +44,14 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   right: 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  padding: 16px 0;
+  padding: 12px 0;
 }
 
 .navbar.scrolled {
   background: rgba(245, 244, 232, 0.97);
   backdrop-filter: blur(12px);
   box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
 .nav-inner {
@@ -67,17 +66,14 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.logo-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: -0.5px;
+.logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
 }
-
-.orange { color: var(--orange); }
 
 .nav-links {
   display: flex;
@@ -91,6 +87,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   color: var(--text-dark);
   transition: color 0.2s;
   letter-spacing: 0.2px;
+  text-decoration: none;
 }
 
 .nav-links a:hover { color: var(--orange); }

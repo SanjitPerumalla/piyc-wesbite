@@ -2,14 +2,13 @@
   <section id="impact" class="impact">
     <div class="container">
       <div class="impact-intro">
-        <div class="section-label">Making a Difference</div>
-        <h2 class="section-title">Real <span class="orange">Community Impact</span></h2>
-        <p>Every event we run, every dollar we raise, and every volunteer hour contributed goes toward building a stronger Peoria.</p>
+        <div class="section-label reveal">Making a Difference</div>
+        <h2 class="section-title reveal delay-1">Real <span class="orange">Community Impact</span></h2>
+        <p class="reveal delay-2">Every event we run, every dollar we raise, and every volunteer hour contributed goes toward building a stronger Peoria.</p>
       </div>
 
       <div class="impact-grid">
-        <div v-for="item in impacts" :key="item.title" class="impact-card" :class="item.variant">
-          <div class="impact-card-icon">{{ item.icon }}</div>
+        <div v-for="(item, i) in impacts" :key="item.title" class="impact-card reveal from-scale" :class="[item.variant, `delay-${i + 1}`]">
           <h3>{{ item.title }}</h3>
           <p>{{ item.desc }}</p>
           <ul v-if="item.bullets">
@@ -18,7 +17,7 @@
         </div>
       </div>
 
-      <div class="leadership-banner">
+      <div class="leadership-banner reveal">
         <div class="banner-left">
           <h3>Youth-Led. Community-Driven.</h3>
           <p>PIYC is built and run entirely by young leaders in the Peoria area — proving that age is no barrier to making a real difference.</p>
@@ -34,7 +33,6 @@
 <script setup>
 const impacts = [
   {
-    icon: '🏙️',
     title: 'Community Engagement',
     desc: 'Organized athletic events that bring Peoria residents together around shared goals and friendly competition.',
     bullets: [
@@ -45,7 +43,6 @@ const impacts = [
     variant: 'orange-card',
   },
   {
-    icon: '💸',
     title: 'Charitable Giving',
     desc: 'Every tournament we host translates competitive play into real donations that go directly to local charities.',
     bullets: [
@@ -56,7 +53,6 @@ const impacts = [
     variant: 'green-card',
   },
   {
-    icon: '🎓',
     title: 'Leadership Development',
     desc: 'PIYC is a training ground for the next generation of community leaders — developing real-world skills through real-world events.',
     bullets: [
@@ -80,7 +76,7 @@ const roles = [
 <style scoped>
 .impact {
   padding: 100px 24px;
-  background: var(--white);
+  background: var(--cream);
 }
 
 .container {
@@ -151,11 +147,6 @@ const roles = [
 .cream-card {
   background: var(--cream);
   border-color: var(--cream-dark);
-}
-
-.impact-card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 16px;
 }
 
 .impact-card h3 {

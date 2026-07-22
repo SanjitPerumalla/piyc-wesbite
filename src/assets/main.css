@@ -7,8 +7,8 @@
   --green: #1A6B35;
   --green-dark: #124d26;
   --green-light: #2a9a4e;
-  --cream: #F5F4E8;
-  --cream-dark: #eceadb;
+  --cream: #FFFCF3;
+  --cream-dark: #f0ece0;
   --white: #ffffff;
   --text-dark: #1a1a1a;
   --text-mid: #444;
@@ -52,4 +52,32 @@ section {
 
 #app {
   min-height: 100vh;
+}
+
+/* ====== Scroll Reveal System ====== */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.from-left  { transform: translateX(-56px); }
+.reveal.from-right { transform: translateX(56px); }
+.reveal.from-scale { transform: translateY(28px) scale(0.95); }
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.40s; }
+.delay-6 { transition-delay: 0.48s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }

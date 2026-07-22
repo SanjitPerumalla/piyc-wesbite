@@ -4,11 +4,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo">
-            <PiycLogo :size="52" />
-            <div>
-              <div class="brand-name"><span class="orange">PIYC</span></div>
-              <div class="brand-sub">Peoria Indian Youth Coalition</div>
-            </div>
+            <img src="/piyc-logo.png" alt="PIYC Logo" class="footer-logo-img" />
           </div>
           <p class="footer-tagline">
             Building community through sport, service, and shared purpose — right here in Peoria, Illinois.
@@ -18,20 +14,20 @@
         <div class="footer-links">
           <div class="link-group">
             <h4>Organization</h4>
-            <a href="#about">About PIYC</a>
-            <a href="#impact">Our Impact</a>
-            <a href="#events">Events</a>
+            <a href="/#about">About PIYC</a>
+            <a href="/#impact">Our Impact</a>
+            <a href="/#events">Events</a>
           </div>
           <div class="link-group">
             <h4>Get Involved</h4>
-            <a href="#get-involved">Join as Member</a>
-            <a href="#get-involved">Volunteer</a>
-            <a href="#get-involved">Partner With Us</a>
+            <router-link to="/join">Join as Member</router-link>
+            <router-link to="/join">Volunteer</router-link>
+            <router-link to="/join">Partner With Us</router-link>
           </div>
           <div class="link-group">
             <h4>Contact</h4>
             <a href="mailto:piyc@example.com">piyc@example.com</a>
-            <span class="footer-location">📍 Peoria, Illinois</span>
+            <span class="footer-location">Peoria, Illinois</span>
           </div>
         </div>
       </div>
@@ -45,7 +41,6 @@
 </template>
 
 <script setup>
-import PiycLogo from './PiycLogo.vue'
 const year = new Date().getFullYear()
 </script>
 
@@ -68,26 +63,13 @@ const year = new Date().getFullYear()
   margin-bottom: 56px;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.footer-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
   margin-bottom: 20px;
-}
-
-.brand-name {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 1.6rem;
-}
-
-.orange { color: var(--orange); }
-
-.brand-sub {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
 }
 
 .footer-tagline {
@@ -123,6 +105,7 @@ const year = new Date().getFullYear()
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.65);
   transition: color 0.2s;
+  text-decoration: none;
 }
 
 .link-group a:hover { color: var(--white); }
