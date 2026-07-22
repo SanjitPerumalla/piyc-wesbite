@@ -79,8 +79,9 @@ section {
 .delay-6 { transition-delay: 0.48s; }
 
 @media (max-width: 768px) {
-  .reveal.from-left  { transform: translateX(-28px); }
-  .reveal.from-right { transform: translateX(28px); }
+  /* Remove horizontal slides on mobile — they clip against the edge */
+  .reveal.from-left,
+  .reveal.from-right { transform: translateY(32px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
