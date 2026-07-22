@@ -54,18 +54,19 @@ const spotlightStyle = computed(() => ({
 }))
 
 onMounted(() => {
-  if (window.matchMedia('(pointer: fine)').matches) {
+  const hasPointer = window.matchMedia('(pointer: fine)').matches
+  if (hasPointer) {
     document.documentElement.classList.add('has-custom-cursor')
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
+    animate()
   }
-  window.addEventListener('scroll',    updateProgress, { passive: true })
-  window.addEventListener('mousemove', onMouseMove,    { passive: true })
-  animate()
+  window.addEventListener('scroll', updateProgress, { passive: true })
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll',    updateProgress)
+  window.removeEventListener('scroll', updateProgress)
   window.removeEventListener('mousemove', onMouseMove)
-  cancelAnimationFrame(rafId)
+  if (rafId) cancelAnimationFrame(rafId)
 })
 </script>
 

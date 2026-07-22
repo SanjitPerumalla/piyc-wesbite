@@ -48,18 +48,26 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
+const isTouch = ref(false)
 const scrollY = ref(0)
+
 function onScroll() { scrollY.value = window.scrollY }
-onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+
+onMounted(() => {
+  isTouch.value = window.matchMedia('(pointer: coarse)').matches
+  if (!isTouch.value) {
+    window.addEventListener('scroll', onScroll, { passive: true })
+  }
+})
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
-const contentStyle = computed(() => ({
-  opacity: Math.max(0, 1 - scrollY.value / 480),
-}))
+const contentStyle = computed(() =>
+  isTouch.value ? {} : { opacity: Math.max(0, 1 - scrollY.value / 480) }
+)
 
-const logoStyle = computed(() => ({
-  transform: `translateY(${scrollY.value * 0.14}px)`,
-}))
+const logoStyle = computed(() =>
+  isTouch.value ? {} : { transform: `translateY(${scrollY.value * 0.14}px)` }
+)
 </script>
 
 <style scoped>
