@@ -1,5 +1,6 @@
 <template>
-  <section id="home" class="hero">
+  <section id="home" class="hero" ref="heroRef" @mousemove="onMouseMove" @mouseleave="onMouseLeave">
+    <div class="hero-spotlight" :style="spotlightStyle"></div>
     <div class="hero-bg">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
@@ -60,6 +61,26 @@ const contentStyle = computed(() => ({
 const logoStyle = computed(() => ({
   transform: `translateY(${scrollY.value * 0.14}px)`,
 }))
+
+// Mouse spotlight
+const heroRef = ref(null)
+const mouseX = ref(0)
+const mouseY = ref(0)
+const spotlightOn = ref(false)
+
+function onMouseMove(e) {
+  const rect = heroRef.value?.getBoundingClientRect()
+  if (!rect) return
+  mouseX.value = e.clientX - rect.left
+  mouseY.value = e.clientY - rect.top
+  spotlightOn.value = true
+}
+function onMouseLeave() { spotlightOn.value = false }
+
+const spotlightStyle = computed(() => ({
+  background: `radial-gradient(600px circle at ${mouseX.value}px ${mouseY.value}px, rgba(247,148,29,0.09), transparent 70%)`,
+  opacity: spotlightOn.value ? 1 : 0,
+}))
 </script>
 
 <style scoped>
@@ -73,6 +94,21 @@ const logoStyle = computed(() => ({
   padding: 100px 24px 60px;
   position: relative;
   gap: 40px;
+  isolation: isolate;
+}
+
+.hero-content,
+.hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
 }
 
 .hero-bg {
