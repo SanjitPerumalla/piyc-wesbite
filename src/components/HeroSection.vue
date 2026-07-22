@@ -311,6 +311,12 @@ const logoStyle = computed(() =>
     padding-top: 120px;
   }
 
+  /* Contain blobs to hero section on mobile — prevents iOS scroll jitter */
+  .hero-bg {
+    position: absolute;
+    height: 100%;
+  }
+
   .hero-desc { margin: 0 auto 40px; }
   .hero-actions { justify-content: center; }
   .hero-scroll { justify-content: center; }

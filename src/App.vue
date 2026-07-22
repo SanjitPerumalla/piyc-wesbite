@@ -100,6 +100,11 @@ onUnmounted(() => {
   z-index: 0;
 }
 
+@media (pointer: coarse) {
+  .spotlight { display: none; }
+  .cursor-wheel { display: none; }
+}
+
 /* ── Scroll progress bar ───────────────────────────────────────────────────── */
 .scroll-bar {
   position: fixed;
