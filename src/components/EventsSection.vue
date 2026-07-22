@@ -161,7 +161,7 @@ const logistics = [
   letter-spacing: 1px;
   text-transform: uppercase;
   padding: 6px 18px;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 .event-content {

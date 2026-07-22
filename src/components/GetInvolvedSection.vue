@@ -138,7 +138,7 @@ const ways = [
 
 .way-btn {
   padding: 11px 28px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 0.9rem;
   transition: all 0.2s;
@@ -200,7 +200,7 @@ const ways = [
   background: var(--orange);
   color: var(--white);
   padding: 13px 28px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.2s;
@@ -213,7 +213,7 @@ const ways = [
   background: transparent;
   color: var(--green);
   padding: 13px 28px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 0.95rem;
   border: 2px solid var(--green);

@@ -129,7 +129,7 @@ const year = new Date().getFullYear()
   background: rgba(247, 148, 29, 0.15);
   color: var(--orange-light);
   padding: 5px 14px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 0.78rem;
   letter-spacing: 0.5px;

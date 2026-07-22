@@ -96,7 +96,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   background: var(--orange);
   color: var(--white) !important;
   padding: 10px 22px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700 !important;
   transition: background 0.2s, transform 0.2s !important;
 }

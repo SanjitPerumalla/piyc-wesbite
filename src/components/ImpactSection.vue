@@ -221,7 +221,7 @@ const roles = [
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 8px 18px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;

@@ -326,7 +326,7 @@ async function handleSubmit() {
   background: var(--orange);
   color: var(--white);
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   padding: 15px 36px;
   font-size: 1rem;
   font-weight: 700;
@@ -377,7 +377,7 @@ async function handleSubmit() {
   background: var(--green);
   color: var(--white);
   padding: 13px 32px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;

@@ -138,7 +138,7 @@ const logoStyle = computed(() => ({
   font-weight: 600;
   font-size: 0.85rem;
   padding: 6px 16px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin-bottom: 24px;
   letter-spacing: 0.5px;
 }
@@ -186,7 +186,7 @@ const logoStyle = computed(() => ({
   background: var(--orange);
   color: var(--white);
   padding: 14px 32px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 1rem;
   transition: all 0.25s ease;
@@ -204,7 +204,7 @@ const logoStyle = computed(() => ({
   background: transparent;
   color: var(--green);
   padding: 14px 32px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 700;
   font-size: 1rem;
   border: 2.5px solid var(--green);
