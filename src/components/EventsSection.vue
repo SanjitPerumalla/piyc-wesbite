@@ -4,7 +4,7 @@
       <div class="section-header">
         <div class="section-label reveal">What We Do</div>
         <h2 class="section-title reveal delay-1">Our <span class="orange">Signature Events</span></h2>
-        <p class="section-sub reveal delay-2">We transform athletic competition into community impact — every match played means more for the causes we care about.</p>
+        <p class="section-sub reveal delay-2">We transform athletic competition into community impact. Every match played means more for the causes we care about.</p>
       </div>
 
       <div class="event-feature reveal delay-1">
@@ -15,7 +15,7 @@
             <p class="event-desc">
               Our flagship event brings the community together for an afternoon of competition,
               camaraderie, and giving back. Teams compete in a structured bracket format for a
-              chance to win — and to direct proceeds to a local charity of their choice.
+              chance to win and direct proceeds to a local charity of their choice.
             </p>
 
             <div class="event-details">
@@ -92,7 +92,7 @@ const eventDetails = [
 
 const logistics = [
   { title: 'Court Setup', desc: 'Full pickleball court setup with nets, marked boundaries, and equipment provided for all participants.' },
-  { title: 'Food & Refreshments', desc: 'Cotton candy, popcorn, and cookies available — keeping energy high throughout the tournament.' },
+  { title: 'Food & Refreshments', desc: 'Cotton candy, popcorn, and cookies to keep energy high throughout the tournament.' },
   { title: 'Volunteer Teams', desc: 'Dedicated volunteer coordinators managing supplies, coolers, ice, sanitizer, and player logistics.' },
   { title: 'Bracket Management', desc: 'Live bracket tracking and real-time adjustments to handle scheduling changes and ensure fair play.' },
 ]

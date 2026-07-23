@@ -20,7 +20,7 @@
       <div class="leadership-banner reveal">
         <div class="banner-left">
           <h3>Youth-Led. Community-Driven.</h3>
-          <p>PIYC is built and run entirely by young leaders in the Peoria area — proving that age is no barrier to making a real difference.</p>
+          <p>PIYC is built and run entirely by young leaders in the Peoria area, proving that age is no barrier to making a real difference.</p>
         </div>
         <div class="banner-right">
           <div v-for="role in roles" :key="role" class="role-tag">{{ role }}</div>
@@ -54,7 +54,7 @@ const impacts = [
   },
   {
     title: 'Leadership Development',
-    desc: 'PIYC is a training ground for the next generation of community leaders — developing real-world skills through real-world events.',
+    desc: 'PIYC is a training ground for the next generation of community leaders, developing real-world skills through real-world events.',
     bullets: [
       'Event planning & management',
       'Volunteer coordination',

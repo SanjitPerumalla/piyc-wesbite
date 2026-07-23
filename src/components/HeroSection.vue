@@ -19,8 +19,8 @@
       </h1>
 
       <p class="hero-desc enter enter-3">
-        The Peoria Indian Youth Coalition unites 50+ passionate members to create
-        meaningful change — through charitable events, community engagement, and
+        The Peoria Indian Youth Coalition unites 150+ passionate members to create
+        meaningful change through charitable events, community engagement, and
         the power of athletics.
       </p>
 

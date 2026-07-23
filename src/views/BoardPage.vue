@@ -7,7 +7,7 @@
         <router-link to="/" class="back-link">← Back to Home</router-link>
         <div class="section-label">Leadership</div>
         <h1>Meet the <span class="orange">Board</span></h1>
-        <p>The dedicated team behind PIYC — organizing events, leading volunteers, and driving our mission forward.</p>
+        <p>The dedicated team behind PIYC, organizing events, leading volunteers, and driving our mission forward.</p>
       </div>
     </div>
 

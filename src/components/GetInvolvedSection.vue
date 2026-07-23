@@ -4,7 +4,7 @@
       <div class="section-header">
         <div class="section-label reveal">Join Us</div>
         <h2 class="section-title reveal delay-1">Be Part of <span class="orange">Something Bigger</span></h2>
-        <p class="reveal delay-2">Whether you're a student, athlete, or community member — there's a place for you at PIYC.</p>
+        <p class="reveal delay-2">Whether you're a student, athlete, or community member, there's a place for you at PIYC.</p>
       </div>
 
       <div class="ways-grid">

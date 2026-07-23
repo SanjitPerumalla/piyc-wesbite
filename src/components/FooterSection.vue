@@ -7,7 +7,7 @@
             <img src="/piyc-logo.png" alt="PIYC Logo" class="footer-logo-img" />
           </div>
           <p class="footer-tagline">
-            Building community through sport, service, and shared purpose — right here in Peoria, Illinois.
+            Building community through sport, service, and shared purpose right here in Peoria, Illinois.
           </p>
         </div>
 

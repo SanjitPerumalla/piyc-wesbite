@@ -14,7 +14,7 @@
           <p class="reveal from-left delay-3">
             What started as a vision has grown into a 50+ member strong coalition of dedicated
             young leaders who believe that community engagement is the foundation of lasting change.
-            We organize, manage, and execute events that bring people together — and funnel the
+            We organize, manage, and execute events that bring people together, funneling the
             proceeds into causes that matter.
           </p>
           <div class="about-values reveal delay-4">
@@ -31,7 +31,7 @@
           </div>
           <div class="info-card card-green reveal from-right delay-3">
             <h3>Our Vision</h3>
-            <p>A Peoria where youth organizations are at the forefront of community development — building bridges between generations, cultures, and causes.</p>
+            <p>A Peoria where youth organizations are at the forefront of community development, building bridges between generations, cultures, and causes.</p>
           </div>
         </div>
       </div>
