@@ -161,7 +161,7 @@ async function handleSubmit() {
   loading.value = true
   // Send to Formspree — replace YOUR_FORM_ID with your actual Formspree endpoint
   try {
-    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    const res = await fetch('https://formspree.io/f/maqrdajg', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(form.value),
