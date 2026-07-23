@@ -121,7 +121,7 @@
               <h3>Contact Us Directly</h3>
               <div class="contact-item">
                 <span class="contact-label">Email</span>
-                <a href="mailto:piyc@example.com">piyc@example.com</a>
+                <a href="mailto:sanjitperumalla01@gmail.com">sanjitperumalla01@gmail.com</a>
               </div>
               <div class="contact-item">
                 <span class="contact-label">Phone</span>
@@ -174,7 +174,7 @@ async function handleSubmit() {
       const body = encodeURIComponent(
         `Name: ${form.value.name}\nEmail: ${form.value.email}\nPhone: ${form.value.phone}\nInterest: ${form.value.interest}\nMessage: ${form.value.message}`
       )
-      window.location.href = `mailto:piyc@example.com?subject=${subject}&body=${body}`
+      window.location.href = `mailto:sanjitperumalla01@gmail.com?subject=${subject}&body=${body}`
       submitted.value = true
     }
   } catch {
@@ -182,7 +182,7 @@ async function handleSubmit() {
     const body = encodeURIComponent(
       `Name: ${form.value.name}\nEmail: ${form.value.email}\nPhone: ${form.value.phone}\nInterest: ${form.value.interest}\nMessage: ${form.value.message}`
     )
-    window.location.href = `mailto:piyc@example.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:sanjitperumalla01@gmail.com?subject=${subject}&body=${body}`
     submitted.value = true
   } finally {
     loading.value = false
