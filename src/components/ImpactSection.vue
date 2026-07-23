@@ -8,7 +8,7 @@
       </div>
 
       <div class="impact-grid">
-        <div v-for="(item, i) in impacts" :key="item.title" class="impact-card reveal from-scale" :class="[item.variant, `delay-${i + 1}`]">
+        <div v-for="(item, i) in impacts" :key="item.title" class="impact-card reveal from-scale" :class="[item.variant, `delay-${i + 1}`]" @mousemove="tilt" @mouseleave="resetTilt">
           <h3>{{ item.title }}</h3>
           <p>{{ item.desc }}</p>
           <ul v-if="item.bullets">
@@ -31,6 +31,8 @@
 </template>
 
 <script setup>
+import { useCardTilt } from '../composables/useCardTilt.js'
+const { tilt, resetTilt } = useCardTilt()
 const impacts = [
   {
     title: 'Community Engagement',

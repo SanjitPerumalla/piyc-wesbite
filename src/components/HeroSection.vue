@@ -25,8 +25,8 @@
       </p>
 
       <div class="hero-actions enter enter-4">
-        <router-link to="/join" class="btn-primary">Join the Coalition</router-link>
-        <a href="#about" class="btn-secondary">Our Story</a>
+        <router-link to="/join" class="btn-primary" v-magnetic>Join the Coalition</router-link>
+        <a href="#about" class="btn-secondary" v-magnetic>Our Story</a>
       </div>
 
       <div class="hero-scroll enter enter-5">
@@ -173,7 +173,20 @@ const logoStyle = computed(() =>
 }
 
 .title-accent { color: var(--orange); }
-.title-green { color: var(--green); }
+.title-green {
+  background: linear-gradient(270deg, var(--green-dark), var(--green-light), var(--orange), var(--green-light), var(--green-dark));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s ease infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 .hero-desc {
   font-size: 1.1rem;

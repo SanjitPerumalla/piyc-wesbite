@@ -8,7 +8,7 @@
       </div>
 
       <div class="ways-grid">
-        <div v-for="(way, i) in ways" :key="way.title" class="way-card reveal from-scale" :class="[way.accent, `delay-${i + 1}`]">
+        <div v-for="(way, i) in ways" :key="way.title" class="way-card reveal from-scale" :class="[way.accent, `delay-${i + 1}`]" @mousemove="tilt" @mouseleave="resetTilt">
           <h3>{{ way.title }}</h3>
           <p>{{ way.desc }}</p>
           <router-link to="/join" class="way-btn">{{ way.cta }}</router-link>
@@ -30,6 +30,9 @@
 </template>
 
 <script setup>
+import { useCardTilt } from '../composables/useCardTilt.js'
+const { tilt, resetTilt } = useCardTilt()
+
 const ways = [
   {
     title: 'Become a Member',

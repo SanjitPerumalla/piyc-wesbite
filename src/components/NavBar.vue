@@ -10,7 +10,7 @@
         <a href="/#events" @click="menuOpen = false">Events</a>
         <a href="/#impact" @click="menuOpen = false">Impact</a>
         <router-link to="/board" @click="menuOpen = false">Board</router-link>
-        <router-link to="/join" class="nav-cta" @click="menuOpen = false">Get Involved</router-link>
+        <router-link to="/join" class="nav-cta" @click="menuOpen = false" v-magnetic>Get Involved</router-link>
       </div>
 
       <button class="hamburger" @click="menuOpen = !menuOpen" aria-label="Toggle menu">

@@ -72,7 +72,7 @@
       </div>
 
       <div class="logistics-grid">
-        <div v-for="(item, i) in logistics" :key="item.title" class="logistics-card reveal" :class="`delay-${i + 1}`">
+        <div v-for="(item, i) in logistics" :key="item.title" class="logistics-card reveal" :class="`delay-${i + 1}`" @mousemove="tilt" @mouseleave="resetTilt">
           <h4>{{ item.title }}</h4>
           <p>{{ item.desc }}</p>
         </div>
@@ -82,6 +82,9 @@
 </template>
 
 <script setup>
+import { useCardTilt } from '../composables/useCardTilt.js'
+const { tilt, resetTilt } = useCardTilt()
+
 const eventDetails = [
   { label: 'Time', value: '4:00 PM – 7:00 PM' },
   { label: 'Entry Fee', value: '$5 per person' },
