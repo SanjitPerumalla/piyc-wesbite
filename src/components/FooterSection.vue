@@ -26,7 +26,7 @@
           </div>
           <div class="link-group">
             <h4>Contact</h4>
-            <a href="mailto:piyc@example.com">piyc@example.com</a>
+            <a href="https://instagram.com/peoriaindianyouth" target="_blank" rel="noopener">@peoriaindianyouth</a>
             <span class="footer-location">Peoria, Illinois</span>
           </div>
         </div>
