@@ -16,7 +16,7 @@
   <div class="spotlight" :style="spotlightStyle"></div>
 
   <!-- Scroll progress bar -->
-  <div class="scroll-bar" :style="{ transform: `scaleX(${progress / 100})` }"></div>
+  <div class="scroll-bar" :style="{ transform: `scaleX(${progress.value / 100})` }"></div>
 
   <RouterView v-slot="{ Component }">
     <Transition name="page" mode="out-in">
@@ -36,25 +36,15 @@ function updateProgress() {
 }
 
 // ── Wheel cursor ─────────────────────────────────────────────────────────────
-const mouse = reactive({ x: -200, y: -200 })
-const pos   = reactive({ x: -200, y: -200 })
-let rafId = null
-
-function lerp(a, b, t) { return a + (b - a) * t }
-
-function animate() {
-  pos.x = lerp(pos.x, mouse.x, 0.45)
-  pos.y = lerp(pos.y, mouse.y, 0.45)
-  rafId = requestAnimationFrame(animate)
-}
+const pos = reactive({ x: -200, y: -200 })
 
 function onMouseMove(e) {
-  mouse.x = e.clientX
-  mouse.y = e.clientY
+  pos.x = e.clientX
+  pos.y = e.clientY
 }
 
 const spotlightStyle = computed(() => ({
-  background: `radial-gradient(700px circle at ${mouse.x}px ${mouse.y}px, rgba(247,148,29,0.08), transparent 70%)`,
+  background: `radial-gradient(700px circle at ${pos.x}px ${pos.y}px, rgba(247,148,29,0.08), transparent 70%)`,
 }))
 
 onMounted(() => {
@@ -62,7 +52,6 @@ onMounted(() => {
   if (hasPointer) {
     document.documentElement.classList.add('has-custom-cursor')
     window.addEventListener('mousemove', onMouseMove, { passive: true })
-    animate()
   }
   window.addEventListener('scroll', updateProgress, { passive: true })
 })
@@ -70,7 +59,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', updateProgress)
   window.removeEventListener('mousemove', onMouseMove)
-  if (rafId) cancelAnimationFrame(rafId)
 })
 </script>
 
