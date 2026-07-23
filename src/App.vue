@@ -18,7 +18,11 @@
   <!-- Scroll progress bar -->
   <div class="scroll-bar" :style="{ transform: `scaleX(${progress / 100})` }"></div>
 
-  <RouterView />
+  <RouterView v-slot="{ Component }">
+    <Transition name="page" mode="out-in">
+      <component :is="Component" :key="$route.path" />
+    </Transition>
+  </RouterView>
 </template>
 
 <script setup>
@@ -103,6 +107,22 @@ onUnmounted(() => {
 @media (pointer: coarse) {
   .spotlight { display: none; }
   .cursor-wheel { display: none; }
+}
+
+/* ── Page transitions ──────────────────────────────────────────────────────── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
 }
 
 /* ── Scroll progress bar ───────────────────────────────────────────────────── */
