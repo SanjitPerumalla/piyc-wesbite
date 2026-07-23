@@ -27,6 +27,7 @@
           <div class="link-group">
             <h4>Contact</h4>
             <a href="https://instagram.com/peoriaindianyouth" target="_blank" rel="noopener">@peoriaindianyouth</a>
+            <a href="mailto:sanjitperumalla01@gmail.com">sanjitperumalla01@gmail.com</a>
             <span class="footer-location">Peoria, Illinois</span>
           </div>
         </div>
