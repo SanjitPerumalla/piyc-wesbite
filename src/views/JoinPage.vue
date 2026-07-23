@@ -125,7 +125,7 @@
               </div>
               <div class="contact-item">
                 <span class="contact-label">Phone</span>
-                <a href="tel:+13095550000">(309) 555-0000</a>
+                <a href="tel:+13092227329">(309) 222-7329</a>
               </div>
               <div class="contact-item">
                 <span class="contact-label">Location</span>
