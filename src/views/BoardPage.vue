@@ -56,8 +56,8 @@ const base = import.meta.env.BASE_URL
 const board = [
   { name: 'Sanjit Perumalla', role: 'Founder & President', photo: 'sanjit.jpg', pos: 'center 20%' },
   { name: 'Hariom Thaker', role: 'Vice President', photo: 'hariom.jpg', pos: 'center top' },
-  { name: 'Darsh Chivukula', role: 'Communications Director', photo: 'darsh.jpg', pos: 'center top' },
-  { name: 'Aariz Khan', role: 'Communications Associate', photo: 'aariz.jpg', pos: 'center 35%' },
+  { name: 'Darsh Chivukula', role: 'Communications Co-Director', photo: 'darsh.jpg', pos: 'center top' },
+  { name: 'Aariz Khan', role: 'Communications Co-Director', photo: 'aariz.jpg', pos: 'center 35%' },
   { name: 'Soumik Veeravali', role: 'Secretary', photo: 'soumik.jpg', pos: 'center 30%' },
   { name: 'Neha Salimath', role: 'Social Media Co-Director', photo: 'neha.jpg', pos: 'center top' },
   { name: 'Ria Bajaj', role: 'Social Media Co-Director', photo: 'ria.jpg', pos: 'center top' },
