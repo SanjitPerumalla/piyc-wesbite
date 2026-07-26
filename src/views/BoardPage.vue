@@ -63,9 +63,6 @@ const board = [
   { name: 'Ria Bajaj', role: 'Social Media Co-Director', photo: 'ria.jpg', pos: 'center top' },
   { name: 'Tasha Furtado', role: 'Treasurer', photo: 'tasha.jpg', pos: 'center 25%', zoom: 1.35 },
   { name: 'Akshith Narava', role: 'Board Member', photo: 'akshith.jpg', pos: 'center top' },
-  { name: 'Board Member', role: 'Member', photo: null },
-  { name: 'Board Member', role: 'Member', photo: null },
-  { name: 'Board Member', role: 'Member', photo: null },
 ]
 
 function initials(name) {
